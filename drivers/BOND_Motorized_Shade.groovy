@@ -15,6 +15,7 @@ metadata {
         capability "WindowShade"
 		capability "Switch"
 		command "fixShade", [[name:"Shade*", type: "ENUM", description: "Shade", constraints: ["open","close"] ] ]
+		command "hold"
     }
 }
 
@@ -24,6 +25,10 @@ def open() {
 
 def close() {
 	parent.handleClose(device, device.deviceNetworkId.split(":")[1])
+}
+
+def hold() {
+	parent.handleHold(device, device.deviceNetworkId.split(":")[1])
 }
 
 def on() {
