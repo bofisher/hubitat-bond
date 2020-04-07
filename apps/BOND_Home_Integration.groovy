@@ -817,6 +817,16 @@ def handleClose(device, bondId)
     }
 }
 
+def handleHold(device, bondId)
+{
+	logDebug "Handling Hold event for ${bondId}"
+	
+    if (executeAction(bondId, "Hold")) 
+    {
+        device.sendEvent(name: "windowShade", value: "held")
+    }
+}
+
 def fixPowerState(device, bondId, state) 
 {
 	logDebug "Setting power state for ${bondId} to ${state}"
